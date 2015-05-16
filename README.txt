@@ -6,7 +6,7 @@ be graded all or nothing using deferred feedback mode. It will work with
 a variety of question types that normally produce credit for partially
 correct responses.
 
-Copy this directory to question/behaviour/deferredallnothing in MoodlE
+Copy this directory to question/behaviour/deferredallnothing in Moodle
 director. Login as admin to complete plugin installation.  Then choose
 this behaviour while editng quiz settings. All questions in the quiz
 will always will receive zero or maximum marks when graded.
