@@ -31,10 +31,12 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
 
     public function process_finish(question_attempt_pending_step $pendingstep) {
         $keep = parent::process_finish($pendingstep);
+        $fraction = $pendingstep->get_fraction();
         if ($keep == question_attempt::KEEP &&
-                $pendingstep->get_fraction() != 1 &&
-                $pendingstep->get_fraction() != 1) {
+                $fraction != null &&
+                $fraction != 1) {
             $pendingstep->set_fraction(0);
+            $pendingstep->set_state(question_state::$gradedwrong);
         }
         return $keep;
     }
