@@ -29,7 +29,4 @@ defined('MOODLE_INTERNAL') || die();
 require_once(dirname(__FILE__) . '/../deferredfeedback/renderer.php');
 
 class qbehaviour_deferredallnothing_renderer extends qbehaviour_deferredfeedback_renderer {
-    protected function disregarded_info() {
-        return '';
-    }
 }
