@@ -41,4 +41,11 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
         return $keep;
     }
 
+    public function get_state_string($showcorrectness) {
+        if ($this->qa->get_state()->is_partially_correct()) {
+            return question_state::$gradedwrong->default_string($showcorrectness);
+        }
+        return $this->qa->get_state()->default_string($showcorrectness);
+    }
+
 }
