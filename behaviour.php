@@ -34,8 +34,8 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
         $fraction = $pendingstep->get_fraction();
         if ($keep == question_attempt::KEEP &&
                 $fraction != null &&
-                $fraction != 1) {
-            $pendingstep->set_fraction(0);
+                $fraction != $this->question->get_max_fraction()) {
+            $pendingstep->set_fraction($this->question->get_min_fraction());
             $pendingstep->set_state(question_state::$gradedwrong);
         }
         return $keep;
