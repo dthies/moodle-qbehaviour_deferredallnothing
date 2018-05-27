@@ -19,7 +19,7 @@
  *
  * @package    qbehaviour
  * @subpackage deferredallnothing
- * @copyright  2015 Daniel Thies <dthies@ccal.edu>
+ * @copyright  2015 Daniel Thies <dethies@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,6 +27,16 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once(dirname(__FILE__) . '/../deferredfeedback/behaviour.php');
 
+/**
+ * Question behaviour for deferred feedback (all-or-nothing).
+ *
+ * The student enters their response during the attempt, and it is saved. Later,
+ * when the whole attempt is finished, their answer is graded, but no partial
+ * credit is given for any questions.
+ *
+ * @copyright  2018 Daniel Thies <dethies@gmail.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
 
     public function process_finish(question_attempt_pending_step $pendingstep) {
@@ -34,8 +44,7 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
         $fraction = $pendingstep->get_fraction();
         if ($keep == question_attempt::KEEP &&
                 $fraction != null &&
-                question_state::graded_state_for_fraction($fraction) !=
-                    question_state::$gradedright) {
+                question_state::graded_state_for_fraction($fraction) != question_state::$gradedright) {
             $pendingstep->set_fraction(0);
             $pendingstep->set_state(question_state::$gradedwrong);
         }

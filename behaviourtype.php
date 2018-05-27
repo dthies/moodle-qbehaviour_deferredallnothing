@@ -18,13 +18,20 @@
  * Question behaviour type for deferred feedback all or nothing
  *
  * @package    qbehaviour_deferredallnothing
- * @copyright  2015 Daniel Thies <dthies@ccal.edu>
+ * @copyright  2015 onwards Daniel Thies <dethies@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 require_once(dirname(__FILE__) . '/../deferredfeedback/behaviourtype.php');
+
+/**
+ * Question behaviour type information for deferred feedback (all-or-nothing) behaviour.
+ *
+ * @copyright  2015 onwards Daniel Thies <dthies@ccal.edu>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 class qbehaviour_deferredallnothing_type extends qbehaviour_deferredfeedback_type {
 }
