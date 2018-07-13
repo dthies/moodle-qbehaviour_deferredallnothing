@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the deferred all or nothing question behaviour for Moodle
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,23 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for the deferredallnothing question behaviour
+ * Deferred feedback (all-or-nothing) question behaviour mobile addon
  *
- * @package    qbehaviour
- * @subpackage deferredallnothing
- * @copyright  2015 onward Daniel Thies <dethies@gmail.com>
+ * @package    qbehaviour_deferredallnothing
+ * @copyright  2018 Daniel Thies <dethies@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qbehaviour_deferredallnothing';
-$plugin->version   = 2018071300;
-
-$plugin->requires  = 2013111800;
-$plugin->dependencies = array(
-    'qbehaviour_deferredfeedback' => 2013110500
+$addons = array(
+    "qbehaviour_deferredallnothing" => array(
+        "handlers" => array(
+            "deferredallnothing" => array(
+                "displaydata" => array(),
+                "delegate" => "CoreQuestionBehaviourDelegate",
+                "method" => "mobile_qbehaviour_deferredallnothing",
+            ),
+        ),
+        "lang" => array(
+            array("plugname", "qbehaviour_deferredallnothing"),
+        ),
+    ),
 );
-
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->release  = '2018071300';
