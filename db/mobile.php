@@ -34,7 +34,7 @@ $addons = array(
             ),
         ),
         "lang" => array(
-            array("plugname", "qbehaviour_deferredallnothing"),
+            array("pluginname", "qbehaviour_deferredallnothing"),
         ),
     ),
 );
