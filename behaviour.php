@@ -43,9 +43,10 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
         $keep = parent::process_finish($pendingstep);
         $fraction = $pendingstep->get_fraction();
         if ($keep == question_attempt::KEEP &&
-                $fraction != null &&
+                !is_null($fraction) &&
                 question_state::graded_state_for_fraction($fraction) != question_state::$gradedright) {
-            $pendingstep->set_fraction(0);
+            $penalty = - $this->question->penalty;
+            $pendingstep->set_fraction($penalty);
             $pendingstep->set_state(question_state::$gradedwrong);
         }
         return $keep;
