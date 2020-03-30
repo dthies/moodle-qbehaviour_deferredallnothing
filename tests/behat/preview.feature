@@ -1,8 +1,8 @@
-@qtype @qbehaviour_deferredallnothing
-Feature: Preview a Multiple choice question
+@qbehaviour @qbehaviour_deferredallnothing
+Feature: Preview a Multiple choice question with Deferred all or nothing behaviour
   As a teacher
   In order to check my questions will work with Deferred all or nothing behaviour
-  I need to preview them with 
+  I need to preview them with Deferred all or nothing behaviour
 
   Background:
     Given the following "users" exist:
@@ -55,4 +55,3 @@ Feature: Preview a Multiple choice question
     And I should see "The odd numbers are One and Three."
     And I should see "The correct answers are: One, Three"
     And I switch to the main window
-
