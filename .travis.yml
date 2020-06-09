@@ -50,8 +50,8 @@ matrix:
 
 before_install:
   - phpenv config-rm xdebug.ini
-  - nvm install 14
-  - nvm use 14
+  - nvm install 12
+  - nvm use 12
   - cd ../..
   - composer create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
