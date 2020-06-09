@@ -10,6 +10,7 @@ services:
 addons:
   firefox: "47.0.1"
   postgresql: "9.6"
+  chrome: "stable"
   apt:
     packages:
     - openjdk-8-jre-headless
@@ -27,6 +28,11 @@ matrix:
       - MOODLE_BRANCH=master
       - DB=mysqli
 
+    - php: 7.4
+      env:
+      - MOODLE_BRANCH=master
+      - DB=pgsql
+
     - php: 7.3
       env:
       - MOODLE_BRANCH=MOODLE_38_STABLE
@@ -36,11 +42,6 @@ matrix:
       env:
       - MOODLE_BRANCH=MOODLE_37_STABLE
       - DB=pgsql
-
-    - php: 7.1
-      env:
-      - MOODLE_BRANCH=MOODLE_36_STABLE
-      - DB=mysqli
 
     - php: 7.1
       env:
