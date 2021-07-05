@@ -32,6 +32,5 @@ require_once(dirname(__FILE__) . '/../deferredfeedback/behaviourtype.php');
  * @copyright  2015 onwards Daniel Thies <dthies@ccal.edu>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class qbehaviour_deferredallnothing_type extends qbehaviour_deferredfeedback_type {
 }

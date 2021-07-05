@@ -17,8 +17,7 @@
 /**
  * Question behaviour for deferred feedback with no partial credit
  *
- * @package    qbehaviour
- * @subpackage deferredallnothing
+ * @package    qbehaviour_deferredallnothing
  * @copyright  2015 Daniel Thies <dethies@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,6 +38,12 @@ require_once(dirname(__FILE__) . '/../deferredfeedback/behaviour.php');
  */
 class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
 
+    /**
+     * Finish the question step
+     *
+     * @param question_attempt_pending_step $pendingstep
+     * @return int
+     */
     public function process_finish(question_attempt_pending_step $pendingstep) {
         $keep = parent::process_finish($pendingstep);
         $fraction = $pendingstep->get_fraction();
@@ -51,6 +56,13 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
         return $keep;
     }
 
+    /**
+     * Generate a brief textual description of the current state of the question.
+     *
+     * @param bool $showcorrectness Whether right/partial/wrong states should
+     * be distinguised.
+     * @return string a brief summary of the current state of the qestion attempt.
+     */
     public function get_state_string($showcorrectness) {
         if ($this->qa->get_state()->is_partially_correct()) {
             return question_state::$gradedwrong->default_string($showcorrectness);

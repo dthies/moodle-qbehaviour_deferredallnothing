@@ -17,8 +17,7 @@
 /**
  * Strings for component 'qbehaviour_deferredallnothing', language 'en'.
  *
- * @package    qbehaviour
- * @subpackage deferredallnothing
+ * @package    qbehaviour_deferredallnothing
  * @copyright  2015 Daniel Thies <dethies@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

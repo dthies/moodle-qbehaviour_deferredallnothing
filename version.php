@@ -17,8 +17,7 @@
 /**
  * Version information for the deferredallnothing question behaviour
  *
- * @package    qbehaviour
- * @subpackage deferredallnothing
+ * @package    qbehaviour_deferredallnothing
  * @copyright  2015 onward Daniel Thies <dethies@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,12 +25,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qbehaviour_deferredallnothing';
-$plugin->version   = 2018071301;
+$plugin->version   = 2018071302;
 
-$plugin->requires  = 2013111800;
+$plugin->requires  = 2018051700;
 $plugin->dependencies = array(
     'qbehaviour_deferredfeedback' => 2013110500
 );
 
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release  = '2018071300';
+$plugin->release  = 'v1.0';
