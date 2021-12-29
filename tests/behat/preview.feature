@@ -26,7 +26,8 @@ Feature: Preview a Multiple choice question with Deferred all or nothing behavio
 
   @javascript @_switch_window
   Scenario: Preview a Multiple choice question and submit a partially correct response.
-    When I choose "Preview" action for "Multi-choice-001" in the question bank
+    When I choose "Edit question" action for "Multi-choice-001" in the question bank
+    And I follow "Preview"
     And I switch to "questionpreview" window
     And I set the field "How questions behave" to "Deferred feedback (all or nothing)"
     And I press "Start again with these options"
@@ -41,7 +42,8 @@ Feature: Preview a Multiple choice question with Deferred all or nothing behavio
 
   @javascript @_switch_window
   Scenario: Preview a Multiple choice question and submit a correct response.
-    When I choose "Preview" action for "Multi-choice-001" in the question bank
+    When I choose "Edit question" action for "Multi-choice-001" in the question bank
+    And I follow "Preview"
     And I switch to "questionpreview" window
     And I set the field "How questions behave" to "Deferred feedback (all or nothing)"
     And I press "Start again with these options"
