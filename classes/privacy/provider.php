@@ -24,8 +24,6 @@
 
 namespace qbehaviour_deferredallnothing\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Privacy Subsystem for qbehaviour_deferredallnothing implementing null_provider.
  *

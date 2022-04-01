@@ -24,8 +24,6 @@
 
 namespace qbehaviour_deferredallnothing\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Mobile output class for Deferred feedback (all-or-nothing) question behaviour
  *
