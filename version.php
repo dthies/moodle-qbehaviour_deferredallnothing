@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qbehaviour_deferredallnothing';
-$plugin->version   = 2018071303;
+$plugin->version   = 2018071304;
 
 $plugin->requires  = 2018051700;
 $plugin->dependencies = array(
