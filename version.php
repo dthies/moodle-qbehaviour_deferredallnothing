@@ -28,9 +28,9 @@ $plugin->component = 'qbehaviour_deferredallnothing';
 $plugin->version   = 2018071304;
 
 $plugin->requires  = 2018051700;
-$plugin->dependencies = array(
-    'qbehaviour_deferredfeedback' => 2013110500
-);
+$plugin->dependencies = [
+    'qbehaviour_deferredfeedback' => 2013110500,
+];
 
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release  = 'v1.0';

@@ -24,17 +24,17 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$addons = array(
-    "qbehaviour_deferredallnothing" => array(
-        "handlers" => array(
-            "deferredallnothing" => array(
-                "displaydata" => array(),
+$addons = [
+    "qbehaviour_deferredallnothing" => [
+        "handlers" => [
+            "deferredallnothing" => [
+                "displaydata" => [],
                 "delegate" => "CoreQuestionBehaviourDelegate",
                 "method" => "mobile_qbehaviour_deferredallnothing",
-            ),
-        ),
-        "lang" => array(
-            array("pluginname", "qbehaviour_deferredallnothing"),
-        ),
-    ),
-);
+            ],
+        ],
+        "lang" => [
+            ["pluginname", "qbehaviour_deferredallnothing"],
+        ],
+    ],
+];

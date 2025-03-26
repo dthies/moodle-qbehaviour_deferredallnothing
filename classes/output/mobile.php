@@ -38,16 +38,16 @@ class mobile {
      * @return array HTML, javascript and otherdata
      */
     public static function mobile_qbehaviour_deferredallnothing($args) {
-        return array(
-            "templates" => array(
-                array(
+        return [
+            "templates" => [
+                [
                     "id" => "deferredallnothing",
                     "html" => " ",
-                ),
-            ),
+                ],
+            ],
             "javascript" => "",
             "otherdata" => "",
-            "files" => array(),
-        );
+            "files" => [],
+        ];
     }
 }
