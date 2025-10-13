@@ -37,7 +37,6 @@ require_once(dirname(__FILE__) . '/../deferredfeedback/behaviour.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
-
     /**
      * Finish the question step
      *
@@ -47,9 +46,11 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
     public function process_finish(question_attempt_pending_step $pendingstep) {
         $keep = parent::process_finish($pendingstep);
         $fraction = $pendingstep->get_fraction();
-        if ($keep == question_attempt::KEEP &&
+        if (
+            $keep == question_attempt::KEEP &&
                 $fraction != null &&
-                question_state::graded_state_for_fraction($fraction) != question_state::$gradedright) {
+                question_state::graded_state_for_fraction($fraction) != question_state::$gradedright
+        ) {
             $pendingstep->set_fraction(0);
             $pendingstep->set_state(question_state::$gradedwrong);
         }
@@ -69,5 +70,4 @@ class qbehaviour_deferredallnothing extends qbehaviour_deferredfeedback {
         }
         return $this->qa->get_state()->default_string($showcorrectness);
     }
-
 }

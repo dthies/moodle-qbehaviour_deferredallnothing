@@ -45,12 +45,18 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$todo);
         $this->check_output_contains_lang_string('notyetanswered', 'question');
         $this->check_current_mark(null);
-        $this->check_current_output($this->get_contains_question_text_expectation($tf),
-                $this->get_does_not_contain_feedback_expectation());
-        $this->assertEquals(get_string('true', 'qtype_truefalse'),
-                $this->quba->get_right_answer_summary($this->slot));
-        $this->assertMatchesRegularExpression('/' . preg_quote($tf->questiontext, '/') . '/',
-                $this->quba->get_question_summary($this->slot));
+        $this->check_current_output(
+            $this->get_contains_question_text_expectation($tf),
+            $this->get_does_not_contain_feedback_expectation()
+        );
+        $this->assertEquals(
+            get_string('true', 'qtype_truefalse'),
+            $this->quba->get_right_answer_summary($this->slot)
+        );
+        $this->assertMatchesRegularExpression(
+            '/' . preg_quote($tf->questiontext, '/') . '/',
+            $this->quba->get_question_summary($this->slot)
+        );
         $this->assertNull($this->quba->get_response_summary($this->slot));
 
         // Process a true answer and check the expected result.
@@ -59,9 +65,11 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$complete);
         $this->check_output_contains_lang_string('answersaved', 'question');
         $this->check_current_mark(null);
-        $this->check_current_output($this->get_contains_tf_true_radio_expectation(true, true),
-                $this->get_does_not_contain_correctness_expectation(),
-                $this->get_does_not_contain_feedback_expectation());
+        $this->check_current_output(
+            $this->get_contains_tf_true_radio_expectation(true, true),
+            $this->get_does_not_contain_correctness_expectation(),
+            $this->get_does_not_contain_feedback_expectation()
+        );
 
         // Process the same data again, check it does not create a new step.
         $numsteps = $this->get_step_count();
@@ -83,11 +91,15 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         // Verify.
         $this->check_current_state(question_state::$gradedright);
         $this->check_current_mark(2);
-        $this->check_current_output($this->get_contains_correct_expectation(),
-                $this->get_contains_tf_true_radio_expectation(false, true),
-                new \question_pattern_expectation('/class="r0 correct"/'));
-        $this->assertEquals(get_string('true', 'qtype_truefalse'),
-                $this->quba->get_response_summary($this->slot));
+        $this->check_current_output(
+            $this->get_contains_correct_expectation(),
+            $this->get_contains_tf_true_radio_expectation(false, true),
+            new \question_pattern_expectation('/class="r0 correct"/')
+        );
+        $this->assertEquals(
+            get_string('true', 'qtype_truefalse'),
+            $this->quba->get_response_summary($this->slot)
+        );
 
         // Process a manual comment.
         $this->manual_grade('Not good enough!', 1, FORMAT_HTML);
@@ -95,7 +107,8 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$mangrpartial);
         $this->check_current_mark(1);
         $this->check_current_output(
-                new \question_pattern_expectation('/' . preg_quote('Not good enough!', '/') . '/'));
+            new \question_pattern_expectation('/' . preg_quote('Not good enough!', '/') . '/')
+        );
 
         // Now change the correct answer to the question, and regrade.
         $tf->rightanswer = false;
@@ -122,11 +135,12 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_output_contains_lang_string('notyetanswered', 'question');
         $this->check_current_mark(null);
         $this->check_current_output(
-                $this->get_contains_question_text_expectation($mc),
-                $this->get_contains_mc_radio_expectation(0, true, false),
-                $this->get_contains_mc_radio_expectation(1, true, false),
-                $this->get_contains_mc_radio_expectation(2, true, false),
-                $this->get_does_not_contain_feedback_expectation());
+            $this->get_contains_question_text_expectation($mc),
+            $this->get_contains_mc_radio_expectation(0, true, false),
+            $this->get_contains_mc_radio_expectation(1, true, false),
+            $this->get_contains_mc_radio_expectation(2, true, false),
+            $this->get_does_not_contain_feedback_expectation()
+        );
 
         // Process the data extracted for this question.
         $this->process_submission(['answer' => $rightindex]);
@@ -136,11 +150,12 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_output_contains_lang_string('answersaved', 'question');
         $this->check_current_mark(null);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($rightindex, true, true),
-                $this->get_contains_mc_radio_expectation(($rightindex + 1) % 3, true, false),
-                $this->get_contains_mc_radio_expectation(($rightindex + 1) % 3, true, false),
-                $this->get_does_not_contain_correctness_expectation(),
-                $this->get_does_not_contain_feedback_expectation());
+            $this->get_contains_mc_radio_expectation($rightindex, true, true),
+            $this->get_contains_mc_radio_expectation(($rightindex + 1) % 3, true, false),
+            $this->get_contains_mc_radio_expectation(($rightindex + 1) % 3, true, false),
+            $this->get_does_not_contain_correctness_expectation(),
+            $this->get_does_not_contain_feedback_expectation()
+        );
 
         // Finish the attempt.
         $this->quba->finish_all_questions();
@@ -149,8 +164,9 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gradedright);
         $this->check_current_mark(3);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($rightindex, false, true),
-                $this->get_contains_correct_expectation());
+            $this->get_contains_mc_radio_expectation($rightindex, false, true),
+            $this->get_contains_correct_expectation()
+        );
 
         // Now change the correct answer to the question, and regrade.
         $mc->answers[13]->fraction = -0.33333333;
@@ -161,7 +177,8 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gradedwrong);
         $this->check_current_mark(0);
         $this->check_current_output(
-                $this->get_contains_incorrect_expectation());
+            $this->get_contains_incorrect_expectation()
+        );
     }
 
     public function test_deferredallnothing_resume_multichoice_single(): void {
@@ -184,8 +201,9 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gradedwrong);
         $this->check_current_mark(0);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($wrongindex, false, true),
-                $this->get_contains_incorrect_expectation());
+            $this->get_contains_mc_radio_expectation($wrongindex, false, true),
+            $this->get_contains_incorrect_expectation()
+        );
 
         // Save the old attempt.
         $oldqa = $this->quba->get_question_attempt($this->slot);
@@ -201,9 +219,10 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_output_contains_lang_string('notchanged', 'question');
         $this->check_current_mark(null);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($wrongindex, true, true),
-                $this->get_does_not_contain_feedback_expectation(),
-                $this->get_does_not_contain_correctness_expectation());
+            $this->get_contains_mc_radio_expectation($wrongindex, true, true),
+            $this->get_does_not_contain_feedback_expectation(),
+            $this->get_does_not_contain_correctness_expectation()
+        );
 
         // Now get it right.
         $this->process_submission(['answer' => $rightindex]);
@@ -213,8 +232,9 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gradedright);
         $this->check_current_mark(3);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($rightindex, false, true),
-                $this->get_contains_correct_expectation());
+            $this->get_contains_mc_radio_expectation($rightindex, false, true),
+            $this->get_contains_correct_expectation()
+        );
     }
 
     public function test_deferredallnothing_resume_multichoice_single_emptyanswer_first(): void {
@@ -237,10 +257,11 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gaveup);
         $this->check_current_mark(null);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation(0, false, false),
-                $this->get_contains_mc_radio_expectation(1, false, false),
-                $this->get_contains_mc_radio_expectation(2, false, false),
-                $this->get_contains_general_feedback_expectation($mc));
+            $this->get_contains_mc_radio_expectation(0, false, false),
+            $this->get_contains_mc_radio_expectation(1, false, false),
+            $this->get_contains_mc_radio_expectation(2, false, false),
+            $this->get_contains_general_feedback_expectation($mc)
+        );
 
         // Save the old attempt.
         $oldqa = $this->quba->get_question_attempt($this->slot);
@@ -256,11 +277,12 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_output_contains_lang_string('notyetanswered', 'question');
         $this->check_current_mark(null);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation(0, true, false),
-                $this->get_contains_mc_radio_expectation(1, true, false),
-                $this->get_contains_mc_radio_expectation(2, true, false),
-                $this->get_does_not_contain_feedback_expectation(),
-                $this->get_does_not_contain_correctness_expectation());
+            $this->get_contains_mc_radio_expectation(0, true, false),
+            $this->get_contains_mc_radio_expectation(1, true, false),
+            $this->get_contains_mc_radio_expectation(2, true, false),
+            $this->get_does_not_contain_feedback_expectation(),
+            $this->get_does_not_contain_correctness_expectation()
+        );
 
         // Now get it wrong.
         $this->process_submission(['answer' => $wrongindex]);
@@ -270,8 +292,9 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gradedwrong);
         $this->check_current_mark(0);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($wrongindex, false, true),
-                $this->get_contains_incorrect_expectation());
+            $this->get_contains_mc_radio_expectation($wrongindex, false, true),
+            $this->get_contains_incorrect_expectation()
+        );
 
         // Save the old attempt.
         $oldqa = $this->quba->get_question_attempt($this->slot);
@@ -287,9 +310,10 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_output_contains_lang_string('notchanged', 'question');
         $this->check_current_mark(null);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($wrongindex, true, true),
-                $this->get_does_not_contain_feedback_expectation(),
-                $this->get_does_not_contain_correctness_expectation());
+            $this->get_contains_mc_radio_expectation($wrongindex, true, true),
+            $this->get_does_not_contain_feedback_expectation(),
+            $this->get_does_not_contain_correctness_expectation()
+        );
 
         // Now get it right.
         $this->process_submission(['answer' => $rightindex]);
@@ -299,7 +323,8 @@ final class walkthrough_test extends \qbehaviour_walkthrough_test_base {
         $this->check_current_state(question_state::$gradedright);
         $this->check_current_mark(3);
         $this->check_current_output(
-                $this->get_contains_mc_radio_expectation($rightindex, false, true),
-                $this->get_contains_correct_expectation());
+            $this->get_contains_mc_radio_expectation($rightindex, false, true),
+            $this->get_contains_correct_expectation()
+        );
     }
 }

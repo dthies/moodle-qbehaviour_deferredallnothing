@@ -36,7 +36,6 @@ require_once(__DIR__ . '/../../../engine/tests/helpers.php');
  * @group      qbehaviour_deferredallnothing
  */
 final class behaviour_type_test extends \qbehaviour_walkthrough_test_base {
-
     /** @var qbehaviour_deferredallnothing_type */
     protected $behaviourtype;
 
@@ -54,8 +53,10 @@ final class behaviour_type_test extends \qbehaviour_walkthrough_test_base {
     }
 
     public function test_get_unused_display_options(): void {
-        $this->assertEquals(['correctness', 'marks', 'specificfeedback', 'generalfeedback', 'rightanswer'],
-                $this->behaviourtype->get_unused_display_options());
+        $this->assertEquals(
+            ['correctness', 'marks', 'specificfeedback', 'generalfeedback', 'rightanswer'],
+            $this->behaviourtype->get_unused_display_options()
+        );
     }
 
     public function test_adjust_random_guess_score(): void {
