@@ -2,7 +2,7 @@ name: Moodle Plugin CI
 
 on:
   schedule:
-    - cron: '0 6 2 4,10 *'
+    - cron: '0 6 3 4,10 *'
 
 jobs:
   test:
@@ -36,7 +36,6 @@ jobs:
           - php: '8.4'
             moodle-branch: 'main'
             database: 'mariadb'
-          - php: '8.3'
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
