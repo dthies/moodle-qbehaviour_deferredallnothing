@@ -23,6 +23,7 @@ defined('MOODLE_INTERNAL') || die();
 global $CFG;
 require_once(__DIR__ . '/../../../engine/lib.php');
 require_once(__DIR__ . '/../../../engine/tests/helpers.php');
+require_once(__DIR__ . '/../../../engine/tests/qbehaviour_walkthrough_test_base.php');
 
 
 /**
@@ -37,11 +38,16 @@ require_once(__DIR__ . '/../../../engine/tests/helpers.php');
  */
 final class behaviour_type_test extends \qbehaviour_walkthrough_test_base {
     /** @var qbehaviour_deferredallnothing_type */
-    protected $behaviourtype;
+    protected $behaviourtype = null;
 
     public function setUp(): void {
         parent::setUp();
         $this->behaviourtype = question_engine::get_behaviour_type('deferredallnothing');
+    }
+
+    public function tearDown(): void {
+        $this->behaviourtype = null;
+        parent::tearDown();
     }
 
     public function test_is_archetypal(): void {
